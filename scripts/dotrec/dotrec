@@ -1,0 +1,30 @@
+#!/bin/bash
+
+clear
+
+echo "dotREC ◉"
+echo "1) Grabar pantalla sin audio interno con Mic"
+echo "2) Grabar pantalla con Audio interno sin Mic"
+echo "3) Grabar pantalla con Audio interno con Mic"
+echo "4) (?) Aspectos de configuración"
+
+read -p "¿Con qué opción deseas comenzar dotREC?: " opcion
+
+case $opcion in
+    1)
+        "$HOME/./dotrecscripts/dotrecpantallasinaudiointernoconmic.sh"
+        ;;
+    2)
+        "$HOME/./dotrecscripts/dotrecpantallaconaudiointernosinmic.sh"
+        ;;
+    3)
+        "$HOME/./dotrecscripts/dotrecpantallaconaudiointernoconmic.sh"
+        ;;
+    4)
+        "$HOME/./dotrecscripts/dotrecconfig.sh"
+        ;;
+    *)
+        echo "Opción inválida"
+        exit 1
+        ;;
+esac
