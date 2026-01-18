@@ -1,0 +1,23 @@
+#!/bin/bash
+
+clear
+
+echo
+echo "Listado de monitores"
+echo
+
+xrandr --listmonitors
+
+echo
+echo "¿Qué monitor deseas escalar?"
+echo
+
+read monitorAEscalar
+
+echo
+echo "¿Qué valor de escalado deseas establecer?"
+echo
+
+read valorDeEscalado
+
+xrandr --output $monitorAEscalar --scale $valorDeEscalado
