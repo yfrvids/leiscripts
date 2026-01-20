@@ -6,6 +6,15 @@ Created by Yofre (yfrvids)
 - [Guía](#guia)
 - [Script](#script)
 
+## Update
+
+Se ha agregado al proyecto un archivo único de configuración que permite establecer valores determinados, haciendo más rápido y sencillo el proceso de iniciar una grabación. Este archivo se puede encontrar en la siguiente ruta:
+
+📁├── dotrecscripts
+            ├── dotrecdefault.sh
+
+Dotrec ya cuenta con esta nueva alternativa en su menú de inicio, la cual se posiciona como la opción número 5 (default), solo seleccionala, dale un nombre a tu video, e inicia.
+
 ## Contexto
 
 En esta corta sección de contexto se explicarán conceptos básicos acerca del uso aplicado de ffmpeg con respecto a dotrec, y además de eso, se explicará que tipo de configuraciones especiales hay que tener en cuenta. Al mismo tiempo se verán comandos independientes que quizás no formen parte de un comando final, pero que son presentados como una alternativa a tareas en específico que exponen una aplicación progresiva en lugar de un comando extenso sin comprensión previa.
