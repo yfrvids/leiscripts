@@ -10,8 +10,10 @@ Created by Yofre (yfrvids)
 
 Se ha agregado al proyecto un archivo único de configuración que permite establecer valores determinados, haciendo más rápido y sencillo el proceso de iniciar una grabación. Este archivo se puede encontrar en la siguiente ruta:
 
+```sh
 📁├── dotrecscripts
             ├── dotrecdefault.sh
+```
 
 Dotrec ya cuenta con esta nueva alternativa en su menú de inicio, la cual se posiciona como la opción número 5 (default), solo seleccionala, dale un nombre a tu video, e inicia.
 
