@@ -15,7 +15,7 @@ Se ha agregado al proyecto un archivo único de configuración que permite estab
             ├── dotrecdefault.sh
 ```
 
-Dotrec ya cuenta con esta nueva alternativa en su menú de inicio, la cual se posiciona como la opción número 5 (default), solo seleccionala, dale un nombre a tu video, e inicia.
+Dotrec ya cuenta con esta nueva alternativa en su menú de inicio, la cual se posiciona como la opción número 6 (default), solo seleccionala, dale un nombre a tu video, e inicia.
 
 ## Contexto
 
