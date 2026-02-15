@@ -1,0 +1,26 @@
+#!/bin/bash
+
+clear
+
+echo
+read -p "Youtube Music / Youtube Link: " linkDeYTMusic
+echo
+
+COMMON_ARGS=(
+  -x --audio-format mp3 --audio-quality 0 \
+  --add-metadata --embed-thumbnail \
+  --convert-thumbnails png \
+  --ppa "EmbedThumbnail+ffmpeg_o:-c:v png -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\"" \
+  --output "%(title)s.%(ext)s"
+)
+
+# intento para version 1
+yt-dlp "$linkDeYTMusic" "${COMMON_ARGS[@]}"
+
+# intento para version 2 forzar cliente android
+if [ $? -ne 0 ]; then
+  echo "⚠️ Falló descarga normal, reintentando con cliente android..."
+  yt-dlp \
+    --extractor-args "youtube:player_client=android" \
+    "$linkDeYTMusic" "${COMMON_ARGS[@]}"
+fi
