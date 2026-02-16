@@ -5,10 +5,14 @@ audiomic=alsa_input.pci-0000_00_1b.0.analog-stereo
 
 volsystem=-10
 
+read -p "Video size (1024x768, 1366x768): " videoSize
+
+read -p "framerate (fps): " fps
+
 ffmpeg \
  -f pulse -i "$audiomic" \
  -f pulse -i "$audiosistema" \
- -f x11grab -video_size 1024x768 -framerate 30 -i :0.0+0,0 \
+ -f x11grab -video_size $videoSize -framerate $fps -i :0.0+0,0 \
  -filter_complex \
    "[0:a]adelay=0|0,volume=5dB[mic]; \
     [1:a]adelay=150|150,volume="$volsystem"dB[sistema]; \
