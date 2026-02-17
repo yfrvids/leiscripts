@@ -1,7 +1,7 @@
 #!/bin/bash
 
-audiosistema=alsa_output.pci-0000_00_1b.0.analog-stereo.monitor
-audiomic=alsa_input.pci-0000_00_1b.0.analog-stereo
+audiosistema=$(grep '^audiosource=' ~/.sourcesdotrec.txt | cut -d'=' -f2 | tr -d '"')
+audiomic=$(grep '^micsource=' ~/.sourcesdotrec.txt | cut -d'=' -f2 | tr -d '"')
 
 volsystem=-10
 
@@ -10,6 +10,10 @@ read -p "-video_size (1366x768, 10124x768): " videoSize
 read -p "-framerate: " fps
 
 read -p "Coordenadas de Monitor (-i :0.0+X,Y) -i :0.0+" coordenadas
+
+read -p "Nombre de archivo: " nombregrabacion
+
+nombregrabacionfinal=${nombregrabacion:-output.mkv}
 
 ffmpeg \
  -f pulse -i "$audiomic" \
@@ -22,4 +26,4 @@ ffmpeg \
  -map 2:v -map "[audio_final]" \
  -c:v libx264 -preset veryfast \
  -c:a aac -b:a 128k \
- output.mkv
+ "$nombregrabacionfinal.mkv"
