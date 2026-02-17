@@ -2,12 +2,6 @@
 
 clear
 
-echo "Valores por defecto: "
-
-cat ~/.defaultdotrec.txt
-
-echo ""
-
 echo "Lista de Monitores"
 
 xrandr | grep " connected"
@@ -17,19 +11,19 @@ echo ""
 audiosistema=$(grep '^audiosource=' ~/.sourcesdotrec.txt | cut -d'=' -f2 | tr -d '"')
 audiomic=$(grep '^micsource=' ~/.sourcesdotrec.txt | cut -d'=' -f2 | tr -d '"')
 
-videoSize=$(grep '^videosize=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
+read -p "-video_size (1366x768, 10124x768): " videoSize
 
-fps=$(grep '^fps=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
+read -p "-framerate: " fps
 
-coordenadas=$(grep '^coordenadas=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
+read -p "Coordenadas de Monitor (-i :0.0+X,Y) -i :0.0+" coordenadas
 
-volmic=$(grep '^volmic=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
+read -p "Volumen Mic (5=5dB): " volmic
 
-volsystem=$(grep '^volsystem=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
+read -p "Volumen Audio Interno (-10=-10dB): " volsystem
 
-nombregrabacionfinal=output-$(date +%Y%m%d_%H%M%S)
+read -p "Nombre de archivo: " nombregrabacion
 
-videoformat=$(grep '^videoformat=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
+nombregrabacionfinal=${nombregrabacion:-output-$(date +%Y%m%d_%H%M%S)}
 
 ffmpeg \
  -f pulse -i "$audiomic" \
@@ -42,4 +36,4 @@ ffmpeg \
  -map 2:v -map "[audio_final]" \
  -c:v libx264 -preset veryfast -crf 18 \
  -c:a aac -b:a 192k \
- "$nombregrabacionfinal.$videoformat"
+ "$nombregrabacionfinal.mkv"
