@@ -2,26 +2,44 @@
 
 clear
 
+echo "Valores por defecto: "
+
+cat ~/.defaultdotrec.txt
+
+echo ""
+
 echo "Lista de Monitores"
 
 xrandr | grep " connected"
 
-echo
+echo ""
 
-# pactl list short sources
-mic=alsa_input.pci-0000_03_00.6.analog-stereo
-pcAudio=alsa_output.pci-0000_03_00.6.analog-stereo.monitor
-videoFormat=mkv
+audiosistema=$(grep '^audiosource=' ~/.sourcesdotrec.txt | cut -d'=' -f2 | tr -d '"')
+audiomic=$(grep '^micsource=' ~/.sourcesdotrec.txt | cut -d'=' -f2 | tr -d '"')
 
-resolucionDeMonitor=1366x768
-framerateDeGrabacion=25 # -framerate
-coordenadasDeGrabacion=1366,0 # Coordenadas de Monitor (-i :0.0+X,Y) -i :0.0+
-read -p "Nombre de Archivo de Grabación: " nombreDeArchivoDeGrabacion
-nombreDeArchivoFinal=${nombreDeArchivoDeGrabacion:-salida} # Esta variable de "Final" se crea con el objetivo de que si el valor del nombre de grabación solicitado al usuario es vacio, pues para no causar errores se le asigna un valor por defecto
+videoSize=$(grep '^videosize=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
+
+fps=$(grep '^fps=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
+
+coordenadas=$(grep '^coordenadas=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
+
+volmic=$(grep '^volmic=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
+
+volsystem=$(grep '^volsystem=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
+
+nombregrabacionfinal=output-$(date +%Y%m%d_%H%M%S)
+
+videoformat=$(grep '^videoformat=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
 
 ffmpeg \
-  -f x11grab -video_size $resolucionDeMonitor -framerate $framerateDeGrabacion -i :0.0+$coordenadasDeGrabacion \
-  -f pulse -i $mic \
-  -f pulse -i $pcAudio \
-  -filter_complex amix=inputs=2 \
-  "$HOME/$nombreDeArchivoFinal.$videoFormat"
+ -f pulse -i "$audiomic" \
+ -f pulse -i "$audiosistema" \
+ -f x11grab -video_size $videoSize -framerate $fps -i :0.0+$coordenadas \
+ -filter_complex \
+   "[0:a]adelay=0|0,volume="$volmic"dB[mic]; \
+    [1:a]adelay=150|150,volume="$volsystem"dB[sistema]; \
+    [mic][sistema]amix=inputs=2:duration=longest[audio_final]" \
+ -map 2:v -map "[audio_final]" \
+ -c:v libx264 -preset veryfast -crf 18 \
+ -c:a aac -b:a 192k \
+ "$nombregrabacionfinal.$videoformat"

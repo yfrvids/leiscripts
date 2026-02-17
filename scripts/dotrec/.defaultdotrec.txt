@@ -1,0 +1,6 @@
+videosize=
+fps=
+coordenadas=
+volmic=
+volsystem=
+videoformat=
