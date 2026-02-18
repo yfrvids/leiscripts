@@ -5,8 +5,9 @@ clear
 echo "dotREC ◉"
 echo "1) Grabar pantalla con Audio interno con Mic"
 echo "2) Grabar pantalla con Audio interno con Mic + Controles Avanzados de Audio"
-echo "3) Grabar Webcam sin Audio interno sin Mic"
-echo "4) default"
+echo "3) Grabar pantalla con Audio interno con Mic + Controles Avanzados de Audio + Escalado a 1920x1080 (1080p)"
+echo "4) Grabar Webcam sin Audio interno sin Mic"
+echo "5) default"
 
 read -p "¿Con qué opción deseas comenzar dotREC?: " opcion
 
@@ -18,9 +19,12 @@ case $opcion in
         "$HOME/./dotrecscripts/dotreccontrolesavanzados.sh"
         ;;
     3)
-        "$HOME/./dotrecscripts/dotrecwebcam.sh"
+        "$HOME/./dotrecscripts/dotreccontrolesavanzadosescalado.sh"
         ;;
     4)
+        "$HOME/./dotrecscripts/dotrecwebcam.sh"
+        ;;
+    5)
         "$HOME/./dotrecscripts/dotrecdefault.sh"
         ;;
     *)
