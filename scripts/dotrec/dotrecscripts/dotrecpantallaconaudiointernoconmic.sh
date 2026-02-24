@@ -6,10 +6,13 @@ echo "Lista de Monitores"
 
 xrandr | grep " connected"
 
+echo $DISPLAY
+
 echo
 
 audiosistema=$(grep '^audiosource=' ~/.sourcesdotrec.txt | cut -d'=' -f2 | tr -d '"')
 audiomic=$(grep '^micsource=' ~/.sourcesdotrec.txt | cut -d'=' -f2 | tr -d '"')
+display=$(grep '^display=' ~/.sourcesdotrec.txt | cut -d'=' -f2 | tr -d '"')
 
 read -p "-video_size (1366x768, 10124x768): " videoSize
 
@@ -24,7 +27,7 @@ nombregrabacionfinal=${nombregrabacion:-output-$(date +%Y%m%d_%H%M%S)}
 ffmpeg \
   -f pulse -i "$audiomic" \
   -f pulse -i "$audiosistema" \
-  -f x11grab -video_size $videoSize -framerate $fps -i :0.0+$coordenadas \
+  -f x11grab -video_size $videoSize -framerate $fps -i $display.0+$coordenadas \
   -filter_complex amix=inputs=2 \
   -c:v libx264 -preset veryfast -crf 18 \
   -c:a aac -b:a 192k \

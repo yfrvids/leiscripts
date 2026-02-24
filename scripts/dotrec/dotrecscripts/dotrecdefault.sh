@@ -21,6 +21,8 @@ videoSize=$(grep '^videosize=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
 
 fps=$(grep '^fps=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
 
+display=$(grep '^display=' ~/.sourcesdotrec.txt | cut -d'=' -f2 | tr -d '"')
+
 coordenadas=$(grep '^coordenadas=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
 
 volmic=$(grep '^volmic=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d '"')
@@ -34,7 +36,7 @@ videoformat=$(grep '^videoformat=' ~/.defaultdotrec.txt | cut -d'=' -f2 | tr -d 
 ffmpeg \
  -f pulse -i "$audiomic" \
  -f pulse -i "$audiosistema" \
- -f x11grab -video_size $videoSize -framerate $fps -i :0.0+$coordenadas \
+ -f x11grab -video_size $videoSize -framerate $fps -i $display.0+$coordenadas \
  -filter_complex \
    "[0:a]adelay=0|0,volume="$volmic"dB[mic]; \
     [1:a]adelay=150|150,volume="$volsystem"dB[sistema]; \

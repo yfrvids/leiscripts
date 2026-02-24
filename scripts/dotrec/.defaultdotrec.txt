@@ -1,5 +1,6 @@
 videosize=
 fps=
+display=
 coordenadas=
 volmic=
 volsystem=
