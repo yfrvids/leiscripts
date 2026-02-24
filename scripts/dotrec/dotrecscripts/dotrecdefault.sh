@@ -12,6 +12,8 @@ echo "Lista de Monitores"
 
 xrandr | grep " connected"
 
+echo "Display: $DISPLAY"
+
 echo ""
 
 audiosistema=$(grep '^audiosource=' ~/.sourcesdotrec.txt | cut -d'=' -f2 | tr -d '"')

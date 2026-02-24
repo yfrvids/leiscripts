@@ -6,7 +6,7 @@ echo "Lista de Monitores"
 
 xrandr | grep " connected"
 
-echo $DISPLAY
+echo "Display: $DISPLAY"
 
 echo ""
 
@@ -18,7 +18,7 @@ read -p "-video_size (1366x768, 10124x768): " videoSize
 
 read -p "-framerate: " fps
 
-read -p "Coordenadas de Monitor (-i :0.0+X,Y) -i :0.0+" coordenadas
+read -p "Coordenadas de Monitor (-i :0.0+X,Y) -i $display.0+" coordenadas
 
 read -p "Volumen Mic (5=5dB): " volmic
 
