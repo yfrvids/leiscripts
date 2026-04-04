@@ -58,7 +58,7 @@ El parametro de `-video_size ...x...` debe corresponder a las medidas del monito
 
 Esta sección de guía se diferencia tanto de la siguiente sección (Script) ya que aporta los elementos necesarios antes de "configurar" el script, como de la sección anterior (Contexto) ya que no proporciona "teoría" sino instrucciones a ejecutar y preparar los ajustes indispensables para ejecutar el script.
 
-- Listar las fuentes (input/output) del sistema: `pactl list short sources`
+- Listar las fuentes (input/output) del sistema: `pactl list short sources` (Si no se reconoce el comando **pactl** entonces instalar `pulseaudio-utils`)
 
 Como resultado se puede obtener algo similar a lo siguiente:
 
