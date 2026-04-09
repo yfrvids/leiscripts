@@ -1,9 +1,12 @@
+[soundcard]
 audiosource=
 micsource=
 
+[headset]
 ##audiosource=
 ##micsource=
 
+[custom]
 ##audiosource=
 ##micsource=
 
