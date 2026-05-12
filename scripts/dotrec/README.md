@@ -9,11 +9,11 @@
 	Instalar ffmpeg: `sudo dnf install ffmpeg ffmpeg-devel`
 
 - Windows:
- - Install chocolatey with admin privileges on powershell
- - With Admin privileges install `choco install ffmpeg`
- - Install [VB-CABLE software](https://vb-audio.com/Cable/)
- - Settings -> Sound -> Change the output to 'CABLE Input (VB-Audio Virtual Cable)'
- - Exec file
+	- Install chocolatey with admin privileges on powershell
+ 	- With Admin privileges install `choco install ffmpeg`
+ 	- Install [VB-CABLE software](https://vb-audio.com/Cable/)
+ 	- Settings -> Sound -> Change the output to 'CABLE Input (VB-Audio Virtual Cable)'
+ 	- Exec file
 
 ## Instalar PulseAudio-utils (únicamente en caso de estar usando PipeWire)
 
