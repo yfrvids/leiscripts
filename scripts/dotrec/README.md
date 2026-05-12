@@ -14,7 +14,8 @@
  	- Install [VB-CABLE software](https://vb-audio.com/Cable/)
  	- Settings -> Sound -> Change the output to 'CABLE Input (VB-Audio Virtual Cable)'
  	- Control Panel -> Sound -> Recording tab -> Cable Output -> Properties -> Listen Tab -> Activate Listen to this device (Choosing the playback device ex. speakers) -> Apply
-  	- Exec file dotrec
+  	- Exec the file .bat to record on windows
+
 
 ## Instalar PulseAudio-utils (únicamente en caso de estar usando PipeWire)
 
@@ -25,7 +26,10 @@
 
 ### Linux:
 
-	Mediante el comando `pactl list short sources` copiar y pegar las distintas fuentes de audio y micrófono en el archivo `.sourcesdotrec.txt`
+Mediante el comando `pactl list short sources` copiar y pegar las distintas fuentes de audio y micrófono en el archivo `.sourcesdotrec.txt`
 
 ### Windows:
-	ffmpeg -list_devices true -f dshow -i dummy
+
+`ffmpeg -list_devices true -f dshow -i dummy`
+
+> En el caso de Windows si se esta usando con VB-CABLE solo se tiene que agregar al archivo .sourcesdotrec.txt la fuente del mic (dicho archivo .sourcesdotrec.txt esta en raíz)
