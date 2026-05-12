@@ -23,4 +23,8 @@
 
 ## Listar fuentes de Audio/Microfono
 
-Mediante el comando `pactl list short sources` copiar y pegar las distintas fuentes de audio y micrófono en el archivo `.sourcesdotrec.txt`
+### Linux:
+	- Mediante el comando `pactl list short sources` copiar y pegar las distintas fuentes de audio y micrófono en el archivo `.sourcesdotrec.txt`
+
+### Windows:
+	- `ffmpeg -list_devices true -f dshow -i dummy`
