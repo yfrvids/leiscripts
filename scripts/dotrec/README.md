@@ -13,7 +13,8 @@
  	- With Admin privileges install `choco install ffmpeg`
  	- Install [VB-CABLE software](https://vb-audio.com/Cable/)
  	- Settings -> Sound -> Change the output to 'CABLE Input (VB-Audio Virtual Cable)'
- 	- Exec file
+ 	- Control Panel -> Sound -> Recording tab -> Cable Output -> Properties -> Listen Tab -> Activate Listen to this device (Choosing the playback device ex. speakers) -> Apply
+  	- Exec file dotrec
 
 ## Instalar PulseAudio-utils (únicamente en caso de estar usando PipeWire)
 
