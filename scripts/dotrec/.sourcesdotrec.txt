@@ -1,6 +1,12 @@
 [soundcard]
+## linux
 audiosource=
 micsource=
+
+## windows
+audioSistemaWin=CABLE Output (VB-Audio Virtual Cable)
+audioMicWin=
+displayWin=desktop
 
 [headset]
 ##audiosource=
